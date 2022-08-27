@@ -1,0 +1,34 @@
+{
+  "name": "exercise-tracker",
+  "version": "1.0.0",
+  "description": "solution to freeCodeCamp's exercise tracker project for backend development certification.",
+  "main": "App.js",
+  "scripts": {
+    "start": "node App.js",
+    "devStart": "nodemon App.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/d02ev/freecodecamp--exercise-tracker.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "rest"
+  ],
+  "author": "Vikramaditya Pratap Singh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/d02ev/freecodecamp--exercise-tracker/issues"
+  },
+  "homepage": "https://github.com/d02ev/freecodecamp--exercise-tracker#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.5.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
