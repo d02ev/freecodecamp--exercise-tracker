@@ -11,7 +11,6 @@ This is a solution to the [Exercise Tracker](https://www.freecodecamp.org/learn/
   - [Tech Stack and Packages Used](#tech-stack-and-packages-used)
   - [What I Learned](#what-i-learned)
 - [Environment File Specifications](#environment-file-specifications)
-- [Author Info](#author-info)
 - [Resources and Acknowledgements](#resources-and-acknowledgements)
 
 ## Overview
@@ -40,3 +39,20 @@ This is a solution to the [Exercise Tracker](https://www.freecodecamp.org/learn/
 
   - freeCodeCamp's Solution: [https://exercise-tracker.freecodecamp.rocks/](https://exercise-tracker.freecodecamp.rocks/)
   - Live Solution: []()
+  - Boilerplate Code: [https://github.com/freeCodeCamp/boilerplate-project-exercisetracker/](https://github.com/freeCodeCamp/boilerplate-project-exercisetracker/)
+
+## My Process
+
+- ### Tech Stack and Packages Used
+
+  - [NodeJS](https://www.nodejs.org/)
+  - [Express](https://www.expressjs.com/)
+  - [Mongoose](https://www.mongoosejs.com/)
+  - [CORS](https://www.npmjs.com/package/cors)
+  - [Nodemon](https://www.npmjs.com/package/nodemon)
+
+## Environment File Specifications
+
+- ```NODE_ENV```: Node environment configuration.
+- ```PORT```: Connection port of the server.
+- ```DB_URI```: Database connection string for db connection.
