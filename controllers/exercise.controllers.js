@@ -13,6 +13,9 @@ module.exports = class Exercise {
             if (req.body.date === "") {
                 date = new Date(Date.now()).toDateString();
             }
+            else {
+                date = new Date(req.body.date).toDateString();
+            }
 
             const creation_data = {
                 user_id: user_id,
