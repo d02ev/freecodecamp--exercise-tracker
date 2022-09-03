@@ -18,7 +18,7 @@ const exercise_schema = new Mongoose.Schema({
         required: true
     },
     date: {
-        type: Date,
+        type: String,
         required: true
     }
 },
