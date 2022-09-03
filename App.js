@@ -62,18 +62,17 @@ App.post('/api/users/:_id/exercises', (req, res) => {
             res.status(404).send('User Not Found!');
         }
         else {
-            const user_by_id = user;
-            let date;
+            let date_input;
 
-            if (req.body.date === "") date = new Date(Date.now()).toDateString();
-            else date = new Date(req.body.date).toDateString();
+            if (req.body.date === "") date_input = new Date(Date.now()).toDateString();
+            else date_input = new Date(req.body.date).toDateString();
 
             const exercise_obj = new ExerciseModel({
-                user_id: user_id,
-                username: user_by_id.username,
+                user_id: user._id,
+                username: user.username,
                 description: req.body.description,
                 duration: req.body.duration,
-                date: date
+                date: date_input
             });
 
             exercise_obj.save((err, new_exercise) => {
@@ -87,12 +86,17 @@ App.post('/api/users/:_id/exercises', (req, res) => {
                         let new_count = 0, old_count = 0;
 
                         if (err) {
-                            ++new_count;
+                            res.status(500).json({
+                                error: err.message
+                            });
+                        }
+                        if (log === null) {
+                            let old_count = 0;
 
                             const log_obj = new LogModel({
                                 _id: new_exercise.user_id,
                                 username: new_exercise.username,
-                                count: 0,
+                                count: ++old_count,
                                 log: [{
                                     description: new_exercise.description,
                                     duration: new_exercise.duration,
@@ -104,13 +108,19 @@ App.post('/api/users/:_id/exercises', (req, res) => {
                                 if (err) {
                                     res.status(400).send('Bad Request Cannot Create Log!');
                                 }
-                            })
+                            });
                         }
                         else {
-                            LogModel.findByIdAndUpdate(new_exercise.user_id, {
+                            const new_exercise_obj = {
                                 description: new_exercise.description,
                                 duration: new_exercise.duration,
                                 date: new_exercise.date
+                            };
+
+                            LogModel.findByIdAndUpdate(new_exercise.user_id, {
+                                $push: {
+                                    log: new_exercise_obj
+                                }
                             }, (err, updated_log) => {
                                 if (err) {
                                     res.json(400).send('Unable To Update. Bad Request!');
@@ -119,7 +129,13 @@ App.post('/api/users/:_id/exercises', (req, res) => {
                         }
                     });
 
-                    res.json(new_exercise);
+                    res.json({
+                        _id: new_exercise.user_id,
+                        username: new_exercise.username,
+                        description: new_exercise.description,
+                        duration: new_exercise.duration,
+                        date: new_exercise.date
+                    });
                 }
             });
         }
