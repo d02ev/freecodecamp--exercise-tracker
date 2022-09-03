@@ -1,6 +1,10 @@
 const Mongoose = require('mongoose');
 
 const log_schema = new Mongoose.Schema({
+    _id: {
+        type: Mongoose.Schema.Types.ObjectId,
+        required: true
+    },
     username: {
         type: String,
         required: true
