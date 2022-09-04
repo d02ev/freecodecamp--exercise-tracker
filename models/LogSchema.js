@@ -23,7 +23,7 @@ const log_schema = new Mongoose.Schema({
             required: true
         },
         date: {
-            type: String,
+            type: Date,
             required: true
         }
     }]
