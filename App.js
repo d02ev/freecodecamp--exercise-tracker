@@ -64,7 +64,7 @@ App.post('/api/users/:_id/exercises', (req, res) => {
         else {
             let date_input;
 
-            if (req.body.date === 'undefined') { 
+            if (req.body.date === "") { 
                 date_input = new Date(Date.now()).toString();
             }
             else { 
