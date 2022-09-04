@@ -14,18 +14,18 @@ const log_schema = new Mongoose.Schema({
         required: true
     },
     log: [{
-          description: {
+        description: {
             type: String,
             required: true
-          },
-          duration: {
+        },
+        duration: {
             type: Number,
             required: true
-          },
-          date: {
+        },
+        date: {
             type: String,
             required: true
-          }
+        }
     }]
 },
     {
