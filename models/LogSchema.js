@@ -19,7 +19,7 @@ const log_schema = new Mongoose.Schema({
             required: true
           },
           duration: {
-            type: String,
+            type: Number,
             required: true
           },
           date: {
