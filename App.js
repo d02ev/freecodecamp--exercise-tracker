@@ -111,19 +111,31 @@ App.post('/api/users/:_id/exercises', (req, res) => {
                             });
                         }
                         else {
-                            const new_exercise_obj = {
-                                description: new_exercise.description,
-                                duration: new_exercise.duration,
-                                date: new_exercise.date
-                            };
-
-                            LogModel.findByIdAndUpdate(new_exercise.user_id, {
-                                $push: {
-                                    log: new_exercise_obj
-                                }
-                            }, (err, updated_log) => {
+                            ExerciseModel.find({ user_id: new_exercise.user_id }, (err, docs) => {
                                 if (err) {
-                                    res.json(400).send('Unable To Update. Bad Request!');
+                                    res.status(500).json({
+                                        error: err.message
+                                    });
+                                }
+                                else {
+                                    const log_arr = docs.map((exerciseObj) => {
+                                        return {
+                                            description: exerciseObj.description,
+                                            duration: exerciseObj.duration,
+                                            date: exerciseObj.date
+                                        }
+                                    });
+
+                                    const new_count = log_arr.length;
+
+                                    LogModel.findByIdAndUpdate(new_exercise.user_id, {
+                                        count: new_count,
+                                        log: log_arr
+                                    }, (err, updated_log) => {
+                                        if (err) {
+                                            res.json(400).send('Unable to Update Log. Bad Request');
+                                        }
+                                    });
                                 }
                             });
                         }
