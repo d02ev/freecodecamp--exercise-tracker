@@ -64,13 +64,11 @@ App.post('/api/users/:_id/exercises', (req, res) => {
         else {
             let date_input;
 
-            console.log(req.body.date);
-
             if (req.body.date === "") { 
-                date_input = new Date(Date.now()).toString();
+                date_input = new Date(Date.now());
             }
             else { 
-                date_input = new Date(req.body.date).toString();
+                date_input = new Date(req.body.date);
             }
 
             const exercise_obj = new ExerciseModel({
