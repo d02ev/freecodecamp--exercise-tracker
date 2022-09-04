@@ -64,8 +64,12 @@ App.post('/api/users/:_id/exercises', (req, res) => {
         else {
             let date_input;
 
-            if (req.body.date === "") date_input = new Date(Date.now()).toDateString();
-            else date_input = new Date(req.body.date).toDateString();
+            if (req.body.date === "") { 
+                date_input = new Date(Date.now()).toString();
+            }
+            else { 
+                date_input = new Date(req.body.date).toString();
+            }
 
             const exercise_obj = new ExerciseModel({
                 user_id: user._id,
@@ -144,7 +148,7 @@ App.post('/api/users/:_id/exercises', (req, res) => {
                         username: new_exercise.username,
                         description: new_exercise.description,
                         duration: new_exercise.duration,
-                        date: new_exercise.date
+                        date: new Date(new_exercise.date).toDateString()
                     });
                 }
             });
@@ -168,7 +172,7 @@ App.get('/api/users/:_id/logs', (req, res) => {
                 return {
                     description: obj.description,
                     duration: obj.duration,
-                    date: obj.date
+                    date: new Date(obj.date).toDateString()
                 }
             });
 
