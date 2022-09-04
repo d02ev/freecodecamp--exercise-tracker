@@ -164,7 +164,20 @@ App.get('/api/users/:_id/logs', (req, res) => {
             res.status(404).send('User Log Not Found!');
         }
         else {
-            res.json(user_log);
+            const log_obj = user_log.log.map((obj) => {
+                return {
+                    description: obj.description,
+                    duration: obj.duration,
+                    date: obj.date
+                }
+            });
+
+            res.json({
+                _id: user_log._id,
+                username: user_log.username,
+                count: user_log.count,
+                log: log_obj
+            })
         }
     });
 });
