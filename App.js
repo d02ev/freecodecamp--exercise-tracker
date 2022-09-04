@@ -83,8 +83,6 @@ App.post('/api/users/:_id/exercises', (req, res) => {
                 }
                 else {
                     LogModel.findById(new_exercise.user_id, (err, log) => {
-                        let new_count = 0, old_count = 0;
-
                         if (err) {
                             res.status(500).json({
                                 error: err.message
@@ -150,6 +148,23 @@ App.post('/api/users/:_id/exercises', (req, res) => {
                     });
                 }
             });
+        }
+    });
+});
+
+// access all logs of any user
+App.get('/api/users/:_id/logs', (req, res) => {
+    LogModel.findById(req.params._id, (err, user_log) => {
+        if (err) {
+            res.status(500).json({
+                error: err.message
+            });
+        }
+        if (user_log === null) {
+            res.status(404).send('User Log Not Found!');
+        }
+        else {
+            res.json(user_log);
         }
     });
 });
