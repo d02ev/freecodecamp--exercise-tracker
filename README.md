@@ -38,7 +38,7 @@ This is a solution to the [Exercise Tracker](https://www.freecodecamp.org/learn/
 - ### Links
 
   - freeCodeCamp's Solution: [https://exercise-tracker.freecodecamp.rocks/](https://exercise-tracker.freecodecamp.rocks/)
-  - Live Solution: []()
+  - Live Solution: [https://fcc--exercise-tracker.herokuapp.com/](https://fcc--exercise-tracker.herokuapp.com/)
   - Boilerplate Code: [https://github.com/freeCodeCamp/boilerplate-project-exercisetracker/](https://github.com/freeCodeCamp/boilerplate-project-exercisetracker/)
 
 ## My Process
@@ -51,8 +51,21 @@ This is a solution to the [Exercise Tracker](https://www.freecodecamp.org/learn/
   - [CORS](https://www.npmjs.com/package/cors)
   - [Nodemon](https://www.npmjs.com/package/nodemon)
 
+- ### What I Learned
+
+  - Working on this project helped me to learn more about function callbacks and promises.
+  - Learned about working with dates.
+  - Saving and accessing data from mongodb database.
+  - Understood the working of various mongoose functions such as save(), findById(), find(), findByIdandUpdate().
+  - How to manage default values when no input is provided for a field.
+
 ## Environment File Specifications
 
 - ```NODE_ENV```: Node environment configuration.
 - ```PORT```: Connection port of the server.
 - ```DB_URI```: Database connection string for db connection.
+
+## Resources and Acknowledgements
+
+- [freeCodeCamp](https://www.freecodecamp.org/)
+- [MDN Web Docs](https://developer.mozilla.org)
